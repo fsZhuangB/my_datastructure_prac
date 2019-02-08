@@ -18,4 +18,8 @@ class Vector {
 
         // 析构函数
         ~Vector() {delete [] _elem;}
+
+        protected:
+        Rank size() const {return _size;}
+        bool empty() const  {return !_size;}
 };
