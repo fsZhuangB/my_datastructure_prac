@@ -16,10 +16,36 @@ class Vector {
                 _elem[_size] = v;
         }
 
+        // 空间不足时扩容
+        void expand();
+
         // 析构函数
         ~Vector() {delete [] _elem;}
 
         protected:
         Rank size() const {return _size;}
-        bool empty() const  {return !_size;}
+        bool empty() const {return !_size;}
 };
+
+template <class T>
+void Vector<T>::expand()
+{
+    if (_size < _capacity)
+        return;
+    else
+    {
+        _capacity = std::max(_capacity, DEFAULT_CAPACITY);
+        _capacity = 2 * _capacity;
+        T * oldElem = _elem;
+        _elem = new T[_capacity]; // 分配新的空间
+        for (int i = 0; i < _size; i++)
+        {
+            _elem[i] = oldElem[i];
+        }
+
+        delete [] oldElem;  // 释放原空间
+    }
+    
+
+     
+}
