@@ -9,6 +9,7 @@ class Vector {
         T * _elem;  // 内置数组
     public:
         // 构造函数
+        Vector() = default;
             // 容量为c，规模为s，其中元素初始化为v
         Vector(int c = DEFAULT_CAPACITY, int s = 0, T v = 0)
         {
