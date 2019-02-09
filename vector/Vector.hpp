@@ -4,7 +4,8 @@ typedef int Rank;
 template <class T>
 class Vector {
     protected:
-        Rank _size, int _capacity;
+        Rank _size;
+        int _capacity;
         T * _elem;  // 内置数组
     public:
         // 构造函数
@@ -34,7 +35,7 @@ void Vector<T>::expand()
         return;
     else
     {
-        _capacity = std::max(_capacity, DEFAULT_CAPACITY);
+        _capacity = max(_capacity, DEFAULT_CAPACITY);
         _capacity = 2 * _capacity;
         T * oldElem = _elem;
         _elem = new T[_capacity]; // 分配新的空间
@@ -45,7 +46,4 @@ void Vector<T>::expand()
 
         delete [] oldElem;  // 释放原空间
     }
-    
-
-     
 }
