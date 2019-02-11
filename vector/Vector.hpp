@@ -27,10 +27,15 @@ class Vector {
         // 析构函数
         ~Vector() {delete [] _elem;}
 
+        // 重载[]操作符
         T& operator[] (Rank r)
         {
             return _elem[r];
         }
+
+        // 重载赋值操作符
+        Vector<T> & operator=(Vector<T> const& A);
+
         protected:
          // 空间不足时扩容
         void expand();
@@ -68,4 +73,13 @@ void Vector<T>::copyFrom(T const* A, Rank lo, Rank hi)
     {
         _elem[_size++] = _elem[lo++];
     }
+}
+
+template <class T>
+Vector<T> & operator=(Vector<T> const& A)
+{
+    if (_elem)
+        delete [] _elem;
+    copyFrom(A._elem, 0, V.size());
+    return *this;
 }
