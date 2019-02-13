@@ -1,3 +1,5 @@
+#include <iostream>
+
 typedef int Rank;
 #define DEFAULT_CAPACITY 3 // 默认初始容量
 
@@ -36,6 +38,22 @@ class Vector {
         // 重载赋值操作符
         Vector<T> & operator=(Vector<T> const& A);
 
+        // 无序区间查找
+        Rank find(T const& e, Rank lo, Rank hi) const;
+        Rank find(T const& e) const
+        {
+            return find(e, 0, _size);
+        }
+
+        // 迭代器
+        void Iterator() const
+        {
+            for (int i = 0; i < _size; i++)
+                std::cout << _elem[i] << " ";
+            std::cout << std::endl;
+        }
+
+
         protected:
          // 空间不足时扩容
         void expand();
@@ -69,17 +87,26 @@ void Vector<T>::copyFrom(T const* A, Rank lo, Rank hi)
 {
     _capacity = (hi - lo) * 2;
     _elem = new T[_capacity];
+    _size = 0;
     while (lo < hi)
     {
-        _elem[_size++] = _elem[lo++];
+        _elem[_size++] = A[lo++];
     }
 }
 
 template <class T>
-Vector<T> & operator=(Vector<T> const& A)
+Vector<T> & Vector<T>::operator=(Vector<T> const& A)
 {
     if (_elem)
         delete [] _elem;
-    copyFrom(A._elem, 0, V.size());
+    copyFrom(A._elem, 0, A.size());
     return *this;
+}
+
+template <class T>
+Rank Vector<T>::find(T const& e, Rank lo, Rank hi) const
+{
+    while ((lo < hi--) && (e != _elem[hi]))
+    ;
+    return hi;
 }
