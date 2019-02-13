@@ -19,7 +19,7 @@ int main()
     my_vector.insert(6, 2);
     my_vector.Iterator();
 
-    // my_vector.remove(4);
-    // my_vector.Iterator();
+    my_vector.remove(2);
+    my_vector.Iterator();
     return 0;
 }

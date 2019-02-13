@@ -131,6 +131,18 @@ Rank Vector<T>::insert(T const& e, Rank r)
 }
 
 template <class T>
+int Vector<T>::remove(Rank lo, Rank hi)
+{
+    if (lo == hi)
+        return 0;
+    while (hi < _size)
+        _elem[lo++] = _elem[hi++];
+    _size = lo;
+
+    return hi - lo;
+}
+
+template <class T>
 T Vector<T>::remove(Rank r)
 {
     T e = _elem[r];
@@ -138,14 +150,3 @@ T Vector<T>::remove(Rank r)
     return e;
 }
 
-template <class T>
-int Vector<T>::remove(Rank lo, Rank hi)
-{
-    if (lo == hi)
-        return 0;
-    while (hi++ < _size)
-        _elem[lo++] = _elem[hi++];
-    _size = lo;
-
-    return hi - lo;
-}
