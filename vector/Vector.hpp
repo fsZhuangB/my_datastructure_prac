@@ -56,6 +56,12 @@ class Vector {
         // 插入接口
         Rank insert(T const& e, Rank r);
 
+        // 删除接口
+           // 区间删除
+        int remove(Rank lo, Rank hi);
+           // 单元素删除
+        T remove(Rank r);
+
         protected:
          // 空间不足时扩容
         void expand();
@@ -122,5 +128,24 @@ Rank Vector<T>::insert(T const& e, Rank r)
     _elem[r] = e;
     _size++;
     return r;
+}
 
+template <class T>
+T Vector<T>::remove(Rank r)
+{
+    T e = _elem[r];
+    remove(r, r+1);
+    return e;
+}
+
+template <class T>
+int Vector<T>::remove(Rank lo, Rank hi)
+{
+    if (lo == hi)
+        return 0;
+    while (hi++ < _size)
+        _elem[lo++] = _elem[hi++];
+    _size = lo;
+
+    return hi - lo;
 }
