@@ -124,7 +124,7 @@ Rank Vector<T>::insert(T const& e, Rank r)
 {
     expand();  // 如必要时，扩容
     for (int i = _size; i > r; i--)
-        _elem[i+1] = _elem[i];
+        _elem[i] = _elem[i-1];
     _elem[r] = e;
     _size++;
     return r;
