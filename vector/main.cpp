@@ -15,5 +15,8 @@ int main()
     my_vector.Iterator();
     int j = my_vector.find(2);
     std::cout << j;
+
+    my_vector.insert(6, 2);
+    my_vector.Iterator();
     return 0;
 }

@@ -53,6 +53,8 @@ class Vector {
             std::cout << std::endl;
         }
 
+        // 插入接口
+        Rank insert(T const& e, Rank r);
 
         protected:
          // 空间不足时扩容
@@ -69,7 +71,7 @@ void Vector<T>::expand()
         return;
     else
     {
-        _capacity = max(_capacity, DEFAULT_CAPACITY);
+        _capacity = std::max(_capacity, DEFAULT_CAPACITY);
         _capacity = 2 * _capacity;
         T * oldElem = _elem;
         _elem = new T[_capacity]; // 分配新的空间
@@ -109,4 +111,16 @@ Rank Vector<T>::find(T const& e, Rank lo, Rank hi) const
     while ((lo < hi--) && (e != _elem[hi]))
     ;
     return hi;
+}
+
+template <class T>
+Rank Vector<T>::insert(T const& e, Rank r)
+{
+    expand();  // 如必要时，扩容
+    for (int i = _size; i > r; i--)
+        _elem[i+1] = _elem[i];
+    _elem[r] = e;
+    _size++;
+    return r;
+
 }
