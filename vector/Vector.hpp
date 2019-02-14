@@ -62,6 +62,9 @@ class Vector {
            // 单元素删除
         T remove(Rank r);
 
+        // 唯一化算法
+        int deduplicate();
+
         protected:
          // 空间不足时扩容
         void expand();
@@ -150,3 +153,16 @@ T Vector<T>::remove(Rank r)
     return e;
 }
 
+template <class T>
+int Vector<T>::deduplicate()
+{
+    int OldSize = _size;
+    int i = 1;
+
+    while (i < _size)
+    {
+        (find(_elem[i], 0, i) < 0) ? i++ : remove(i);
+    }
+
+    return OldSize - _size;
+}
