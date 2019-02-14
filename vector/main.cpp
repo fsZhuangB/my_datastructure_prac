@@ -17,9 +17,12 @@ int main()
     // std::cout << j;
 
     my_vector.insert(6, 2);
+    my_vector.insert(6, 2);
     my_vector.Iterator();
 
-    my_vector.remove(2);
+    // my_vector.remove(2);
+    // my_vector.Iterator();
+    my_vector.deduplicate();
     my_vector.Iterator();
     return 0;
 }
