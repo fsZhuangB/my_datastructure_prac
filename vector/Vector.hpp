@@ -65,12 +65,17 @@ class Vector {
         // 唯一化算法
         int deduplicate();
 
+        // 遍历
+        template <typename VST>
+        void traverse(VST&);
         protected:
          // 空间不足时扩容
         void expand();
         Rank size() const {return _size;}
         bool empty() const {return !_size;}
         void copyFrom(T const* A, Rank lo, Rank hi); // 复制数组区间[lo, hi)
+
+
 };
 
 template <class T>
