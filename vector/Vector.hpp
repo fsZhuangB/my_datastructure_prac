@@ -25,7 +25,6 @@ class Vector {
         {
             copyFrom(A, 0, n);
         }
-
         // 析构函数
         ~Vector() {delete [] _elem;}
 
