@@ -22,9 +22,13 @@ class List {
 
     ListNode * first() const;
     ListNode * last() const;
-    
-
-
-
-
 };
+
+template <typename T>
+List()
+{
+    header = new ListNode;
+    trailer = new ListNode;
+    header->next = trailer;
+    trailer->next = nullptr;
+}
