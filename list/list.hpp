@@ -7,6 +7,7 @@ class List {
 
     private:
     // 头尾哨兵节点
+    int size;
     ListNode * header;
     ListNode * trailer;
 
@@ -17,11 +18,33 @@ class List {
     // 重载[]接口
     T& operator[] (Rank r) const;
 
-    Rank size() const;
-    bool empty() const;
+    Rank size() const
+    {
+        return size;
+    }
 
-    ListNode * first() const;
+    bool isEmpty() const
+    {
+        if header->next != nullptr
+            return true;
+        else
+            return false;
+    }
+
+    ListNode * first() const
+    {
+        return header->next;
+    }
     ListNode * last() const;
+    {
+        ListNode * current = header;
+        ListNode * firsrNode;
+        while (current != trailer)
+        {
+            firstNode = firstNode->next;
+        }
+        return firstNode;
+    }
 };
 
 template <typename T>
