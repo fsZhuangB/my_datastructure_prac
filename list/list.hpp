@@ -55,3 +55,16 @@ List()
     header->next = trailer;
     trailer->next = nullptr;
 }
+
+template <typename T>
+T& operator[] (Rank r) const
+{
+    ListNode * current = header;
+    int count = 0;
+    while (count != r)
+    {
+        current = current->next;
+        count++;
+    }
+    return current->data;
+}
