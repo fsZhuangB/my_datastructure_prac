@@ -57,6 +57,8 @@ class List {
         return firstNode;
     }
     void BuildOneTwoThree();
+
+    void Iterator() const;
 };
 
 template <typename T>
@@ -67,6 +69,18 @@ List<T>::List()
     header->next = trailer;
     trailer->next = nullptr;
     _size = 0;
+}
+
+template <typename T>
+void List<T>::Iterator() const
+{
+    ListNode<T>* current = header;
+    while (current != trailer)
+    {
+        std::cout << current->next->data << " ";
+        current = current->next;
+    }
+    std::cout << std::endl;
 }
 
 template <typename T>
