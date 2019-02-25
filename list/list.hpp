@@ -4,6 +4,7 @@
 
 template <class T>
 class List {
+friend void BuildOneTwoThree(List<T>* mylist);
 
     private:
     // 头尾哨兵节点
@@ -66,4 +67,26 @@ List<T>::List()
     header->next = trailer;
     trailer->next = nullptr;
     _size = 0;
+}
+
+template <typename T>
+void BuildOneTwoThree(List<T> mylist)
+{
+    ListNode<T> * One, Two, Three;
+    One = new ListNode<T>;
+    Two = new ListNode<T>;
+    Three = new ListNode<T>;
+    One->data = 1;
+    mylist.header->next = One;
+    One->next = mylist.trailer;
+
+    Two->data = 2;
+    One->next = Two;
+    Two->next = mylist.trailer;
+
+    Three->data = 3;
+    Two->next = Three;
+    Three->next = mylist.trailer;
+
+    //return header;
 }
