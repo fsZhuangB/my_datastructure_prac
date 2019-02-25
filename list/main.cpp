@@ -3,7 +3,7 @@ using namespace std;
 int main()
 {
     List<int> myList;
-    BuildOneTwoThree(myList);
+    myList.BuildOneTwoThree();
 
     return 0;
 }

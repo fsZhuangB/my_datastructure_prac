@@ -4,8 +4,6 @@
 
 template <class T>
 class List {
-friend void BuildOneTwoThree(List<T>& mylist);
-
     public:
     // 头尾哨兵节点
     int _size;
@@ -13,6 +11,7 @@ friend void BuildOneTwoThree(List<T>& mylist);
     ListNode<T> * trailer;
 
     public:
+
     List();
     //~List();
 
@@ -57,6 +56,7 @@ friend void BuildOneTwoThree(List<T>& mylist);
         }
         return firstNode;
     }
+    void BuildOneTwoThree();
 };
 
 template <typename T>
@@ -70,7 +70,7 @@ List<T>::List()
 }
 
 template <typename T>
-void BuildOneTwoThree(List<T>& mylist)
+void List<T>::BuildOneTwoThree()
 {
     ListNode<T>* One;
     ListNode<T>* Two; 
@@ -81,16 +81,16 @@ void BuildOneTwoThree(List<T>& mylist)
     Three = new ListNode<T>;
 
     One->data = 1;
-    mylist->header->next = &One;
-    One->next = mylist.trailer;
+    this->header->next = One;
+    One->next = this->trailer;
 
     Two->data = 2;
-    One->next = &Two;
-    Two->next = mylist.trailer;
+    One->next = Two;
+    Two->next = this->trailer;
 
     Three->data = 3;
-    Two->next = &Three;
-    Three->next = mylist.trailer;
+    Two->next = Three;
+    Three->next = this->trailer;
 
     //return header;
 }
