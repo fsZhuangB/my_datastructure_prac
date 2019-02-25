@@ -1,4 +1,4 @@
-// list
+// 单向链表类
 #include "ListNode.hpp"
 #include <iostream>
 
@@ -7,20 +7,30 @@ class List {
 
     private:
     // 头尾哨兵节点
-    int size;
-    ListNode * header;
-    ListNode * trailer;
+    int _size;
+    ListNode<T> * header;
+    ListNode<T> * trailer;
 
     public:
     List();
     ~List();
 
     // 重载[]接口
-    T& operator[] (Rank r) const;
+    T& operator[] (Rank r) const
+    {
+        ListNode<T> * current = header;
+        int count = 0;
+        while (count != r)
+        {
+            current = current->next;
+            count++;
+        }
+        return current->next->data;
+    }
 
     Rank size() const
     {
-        return size;
+        return _size;
     }
 
     bool isEmpty() const
@@ -31,24 +41,25 @@ class List {
             return false;
     }
 
-    ListNode * first() const
+    ListNode<T>* first() const
     {
         return header->next;
     }
-    ListNode * last() const;
+    ListNode<T>* last() const
     {
-        ListNode * current = header;
-        ListNode * firsrNode;
+        ListNode<T>* current = header;
+        ListNode<T>* firstNode;
         while (current != trailer)
         {
             firstNode = firstNode->next;
+            current = current->next;
         }
         return firstNode;
     }
 };
 
 template <typename T>
-List()
+List<T>::List()
 {
     header = new ListNode;
     trailer = new ListNode;
@@ -59,12 +70,5 @@ List()
 template <typename T>
 T& operator[] (Rank r) const
 {
-    ListNode * current = header;
-    int count = 0;
-    while (count != r)
-    {
-        current = current->next;
-        count++;
-    }
-    return current->data;
+
 }
