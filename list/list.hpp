@@ -74,10 +74,10 @@ List<T>::List()
 template <typename T>
 void List<T>::Iterator() const
 {
-    ListNode<T>* current = header;
+    ListNode<T>* current = header->next;
     while (current != trailer)
     {
-        std::cout << current->next->data << " ";
+        std::cout << current->data << " ";
         current = current->next;
     }
     std::cout << std::endl;
