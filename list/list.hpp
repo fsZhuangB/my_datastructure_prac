@@ -13,7 +13,7 @@ class List {
 
     public:
     List();
-    ~List();
+    //~List();
 
     // 重载[]接口
     T& operator[] (Rank r) const
@@ -65,10 +65,5 @@ List<T>::List()
     trailer = new ListNode<T>;
     header->next = trailer;
     trailer->next = nullptr;
-}
-
-template <typename T>
-T& operator[] (Rank r) const
-{
-
+    _size = 0;
 }

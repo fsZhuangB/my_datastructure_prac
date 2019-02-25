@@ -2,7 +2,7 @@
 using namespace std;
 int main()
 {
-    List myList;
+    List<int> myList;
 
     return 0;
 }
