@@ -35,7 +35,7 @@ class List {
 
     bool isEmpty() const
     {
-        if header->next != nullptr
+        if (header->next != nullptr)
             return true;
         else
             return false;
@@ -61,8 +61,8 @@ class List {
 template <typename T>
 List<T>::List()
 {
-    header = new ListNode;
-    trailer = new ListNode;
+    header = new ListNode<T>;
+    trailer = new ListNode<T>;
     header->next = trailer;
     trailer->next = nullptr;
 }
