@@ -13,19 +13,19 @@ class List {
     public:
 
     List();
-    // ~List();
+    //~List();
 
     // 重载[]接口
     T& operator[] (Rank r) const
     {
-        ListNode<T> * current = header;
+        ListNode<T> * current = header->next;
         int count = 0;
         while (count != r)
         {
             current = current->next;
             count++;
         }
-        return current->next->data;
+        return current->data;
     }
 
     Rank size() const
@@ -66,6 +66,10 @@ class List {
     void BuildOneTwoThree();
 
     void Iterator() const;
+
+    // 删除位置p处的节点，并返回该节点的值
+    T remove(Rank r);
+    // T remove(T data);
 };
 
 template <typename T>
@@ -115,3 +119,40 @@ void List<T>::BuildOneTwoThree()
 
     //return header;
 }
+
+template <typename T>
+T List<T>::remove(Rank r)
+{
+    if (r == 0)
+    {
+        ListNode<T>* current = header->next;
+        header->next = current->next;
+        delete current;
+    }
+    else
+    {
+        // current节点指向首节点
+        ListNode<T>* current = header->next->next;
+
+        // 用作记录前一个节点
+        ListNode<T>* record_node = header->next;
+
+        // 用循环获取节点p的前一个节点
+        while ((current->data != r) && (current != trailer))
+        {
+            current = current->next;
+            record_node = record_node->next;
+        }
+
+        record_node->next = current->next;
+        delete current;
+    }
+
+    return r;
+}
+
+
+
+
+
+
