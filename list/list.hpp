@@ -6,14 +6,14 @@ template <class T>
 class List {
     public:
     // 头尾哨兵节点
-    int _size;
+    //int _size;
     ListNode<T> * header;
     ListNode<T> * trailer;
 
     public:
 
     List();
-    //~List();
+    // ~List();
 
     // 重载[]接口
     T& operator[] (Rank r) const
@@ -30,15 +30,22 @@ class List {
 
     Rank size() const
     {
-        return _size;
+        ListNode<T>* current = header->next;
+        int count = 0;
+        while (current != trailer)
+        {
+            count++;
+            current = current->next;
+        }
+        return count;
     }
 
     bool isEmpty() const
     {
         if (header->next != nullptr)
-            return true;
-        else
             return false;
+        else
+            return true;
     }
 
     ListNode<T>* first() const
@@ -68,7 +75,7 @@ List<T>::List()
     trailer = new ListNode<T>;
     header->next = trailer;
     trailer->next = nullptr;
-    _size = 0;
+    //_size = 0;
 }
 
 template <typename T>
