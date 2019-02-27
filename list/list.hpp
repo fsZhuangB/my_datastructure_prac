@@ -123,6 +123,12 @@ void List<T>::BuildOneTwoThree()
 template <typename T>
 T List<T>::remove(Rank r)
 {
+    if (r >= this->size())
+    {
+        std::cerr << "wrong rank!\n";
+        return -1;
+    }
+    else {
     if (r == 0)
     {
         ListNode<T>* current = header->next;
@@ -131,23 +137,27 @@ T List<T>::remove(Rank r)
     }
     else
     {
-        // current节点指向首节点
-        ListNode<T>* current = header->next->next;
+        // 计数器，记录第n个节点
+        int count = 0;
+      // current节点指向首节点
+        ListNode<T>* current = header->next;
 
         // 用作记录前一个节点
-        ListNode<T>* record_node = header->next;
+        ListNode<T>* record_node = header;
 
         // 用循环获取节点p的前一个节点
-        while ((current->data != r) && (current != trailer))
+        while ((count != r) && (current != trailer))
         {
             current = current->next;
             record_node = record_node->next;
+            count++;
         }
 
         record_node->next = current->next;
         delete current;
     }
 
+    }
     return r;
 }
 
