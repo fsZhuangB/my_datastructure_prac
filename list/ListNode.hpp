@@ -7,7 +7,8 @@ class ListNode {
     T data;
     ListNode<T> * next;
 
-    ListNode() {}
+    ListNode() {} 
     ListNode(T e, ListNode<T>* n = nullptr)
     : data(e), next(n) { } // 默认构造器
 };
+
