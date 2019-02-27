@@ -13,7 +13,7 @@ class List {
     public:
 
     List();
-    //~List();
+    ~List();
 
     // 重载[]接口
     T& operator[] (Rank r) const
@@ -80,6 +80,21 @@ List<T>::List()
     header->next = trailer;
     trailer->next = nullptr;
     //_size = 0;
+}
+
+template <typename T>
+List<T>::~List()
+{
+   // ListNode<T>* current = header->next;
+    ListNode<T>* current = header;
+
+    while (current != trailer)
+    {
+        ListNode<T>* temp = current;
+        current = current->next;
+        delete temp;
+    }
+    delete trailer;
 }
 
 template <typename T>
