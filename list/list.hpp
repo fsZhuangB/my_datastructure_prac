@@ -69,7 +69,9 @@ class List {
 
     // 删除位置p处的节点，并返回该节点的值
     T remove(Rank r);
-    // T remove(T data);
+
+    // 在秩为r的地方插入节点
+    ListNode<T>* insert(Rank r, T data);
 };
 
 template <typename T>
@@ -135,6 +137,7 @@ void List<T>::BuildOneTwoThree()
     //return header;
 }
 
+//  略繁琐，应思考并重写
 template <typename T>
 T List<T>::remove(Rank r)
 {
@@ -176,6 +179,26 @@ T List<T>::remove(Rank r)
     return r;
 }
 
+template <typename T>
+ListNode<T>* List<T>::insert(Rank r, T data)
+{
+    ListNode<T>* current = header->next;
+    ListNode<T>* record = header;
+    int count = 0;
+    while (count != r && current != trailer)
+    {
+        current = current->next;
+        record = record->next;
+        count++;     
+    }
+
+    ListNode<T>* p = new ListNode<T>*;
+    record->next = p;
+    p->data = data;
+    p->next = current;
+
+    return p;
+}
 
 
 
