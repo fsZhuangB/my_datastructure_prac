@@ -192,7 +192,7 @@ ListNode<T>* List<T>::insert(Rank r, T data)
         count++;     
     }
 
-    ListNode<T>* p = new ListNode<T>*;
+    ListNode<T>* p = new ListNode<T>;
     record->next = p;
     p->data = data;
     p->next = current;
