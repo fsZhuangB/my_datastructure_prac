@@ -204,13 +204,13 @@ ListNode<T>* List<T>::insert(Rank r, T data)
 }
 
 template <typename T> 
-Rank r List<T>::find(T nodeData)
+Rank List<T>::find(T nodeData)
 {
     ListNode<T>* current = header->next;
     int count = 0;
     while (current != trailer)
     {
-        if (current->data = nodeData)
+        if (current->data == nodeData)
         {
             return count;
             break;
