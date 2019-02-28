@@ -72,6 +72,9 @@ class List {
 
     // 在秩为r的地方插入节点
     ListNode<T>* insert(Rank r, T data);
+
+    // 链表查找接口
+    Rank find(T data);
 };
 
 template <typename T>
@@ -200,7 +203,28 @@ ListNode<T>* List<T>::insert(Rank r, T data)
     return p;
 }
 
+template <typename T> 
+Rank r List<T>::find(T nodeData)
+{
+    ListNode<T>* current = header->next;
+    int count = 0;
+    while (current != trailer)
+    {
+        if (current->data = nodeData)
+        {
+            return count;
+            break;
+        }
+        else
+        {
+            current = current->next;
+            count++;
+        }
+    }
 
+    return -1;
+
+}
 
 
 
