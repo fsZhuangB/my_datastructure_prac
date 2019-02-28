@@ -15,7 +15,7 @@ int main()
     // cout << second << endl;
     // myList.remove(2);
     // myList.Iterator();
-    myList.insert(0, 5);
+    myList.insert(3, 5);
     myList.Iterator();
     return 0;
 }
