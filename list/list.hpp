@@ -73,6 +73,8 @@ class List {
     // 在秩为r的地方插入节点
     ListNode<T>* insert(Rank r, T data);
 
+    // 找前一个节点的函数
+    ListNode<T>* FindPrevious()
     // 链表查找接口
     Rank find(T data);
 };
@@ -150,32 +152,32 @@ T List<T>::remove(Rank r)
         return -1;
     }
     else {
-    if (r == 0)
-    {
-        ListNode<T>* current = header->next;
-        header->next = current->next;
-        delete current;
-    }
-    else
-    {
-        // 计数器，记录第n个节点
-        int count = 0;
-      // current节点指向首节点
-        ListNode<T>* current = header->next;
-
-        // 用作记录前一个节点
-        ListNode<T>* record_node = header;
-
-        // 用循环获取节点p的前一个节点
-        while ((count != r) && (current != trailer))
+        if (r == 0)
         {
-            current = current->next;
-            record_node = record_node->next;
-            count++;
+            ListNode<T>* current = header->next;
+            header->next = current->next;
+            delete current;
         }
+        else
+        {
+            // 计数器，记录第n个节点
+            int count = 0;
+        // current节点指向首节点
+            ListNode<T>* current = header->next;
 
-        record_node->next = current->next;
-        delete current;
+            // 用作记录前一个节点
+            ListNode<T>* record_node = header;
+
+            // 用循环获取节点p的前一个节点
+            while ((count != r) && (current != trailer))
+            {
+                current = current->next;
+                record_node = record_node->next;
+                count++;
+            }
+
+            record_node->next = current->next;
+            delete current;
     }
 
     }
@@ -223,7 +225,6 @@ Rank List<T>::find(T nodeData)
     }
 
     return -1;
-
 }
 
 
