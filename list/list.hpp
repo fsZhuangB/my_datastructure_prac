@@ -74,7 +74,7 @@ class List {
     ListNode<T>* insert(Rank r, T data);
 
     // 找前一个节点的函数
-    ListNode<T>* FindPrevious()
+    ListNode<T>* FindPrevious();
     // 链表查找接口
     Rank find(T data);
 };
