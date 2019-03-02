@@ -152,14 +152,6 @@ T List<T>::remove(Rank r)
         return -1;
     }
     else {
-        if (r == 0)
-        {
-            ListNode<T>* current = header->next;
-            header->next = current->next;
-            delete current;
-        }
-        else
-        {
             // 计数器，记录第n个节点
             int count = 0;
         // current节点指向首节点
@@ -178,8 +170,6 @@ T List<T>::remove(Rank r)
 
             record_node->next = current->next;
             delete current;
-    }
-
     }
     return r;
 }
