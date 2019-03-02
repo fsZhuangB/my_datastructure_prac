@@ -74,9 +74,9 @@ class List {
     ListNode<T>* insert(Rank r, T data);
 
     // 找前一个节点的函数
-    ListNode<T>* FindPrevious();
+    ListNode<T>* findPrevious(Rank r);
     // 链表查找接口
-    Rank find(T data);
+    Rank find(T nodeData);
 };
 
 template <typename T>
@@ -227,5 +227,21 @@ Rank List<T>::find(T nodeData)
     return -1;
 }
 
+template <typename T>
+ListNode<T>* List<T>::findPrevious(Rank r)
+{
+    ListNode<T>* current = header->next;
+    ListNode<T>* previousNode = header;
+    int count = 0;
 
+    while (current != trailer && count != r)
+    {
+        current = current->next;
+        previousNode = previousNode->next;
+        count++;
+    }
+
+    return previousNode;
+
+}
 
