@@ -13,7 +13,7 @@ int main()
 
     // int second = myList[1];
     // cout << second << endl;
-     myList.remove(2);
+     myList.remove(0);
      myList.Iterator();
     //myList.insert(3, 5);
     //myList.Iterator();

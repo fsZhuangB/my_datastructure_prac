@@ -151,25 +151,20 @@ T List<T>::remove(Rank r)
         std::cerr << "wrong rank!\n";
         return -1;
     }
-    else {
-            // 计数器，记录第n个节点
-            int count = 0;
-        // current节点指向首节点
-            ListNode<T>* current = header->next;
+    else 
+    {
+        // 计数器count
+        int count = 0;
+        ListNode<T>* current = header->next;
+        while (current != trailer && count != r)
+        {
+            current = current->next;
+            count++;
+        }
 
-            // 用作记录前一个节点
-            ListNode<T>* record_node = header;
-
-            // 用循环获取节点p的前一个节点
-            while ((count != r) && (current != trailer))
-            {
-                current = current->next;
-                record_node = record_node->next;
-                count++;
-            }
-
-            record_node->next = current->next;
-            delete current;
+        ListNode<T>* record_node = findPrevious(r);
+        record_node->next = current->next;
+        delete current;
     }
     return r;
 }
