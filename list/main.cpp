@@ -13,10 +13,10 @@ int main()
 
     // int second = myList[1];
     // cout << second << endl;
-     myList.remove(0);
-     myList.Iterator();
-    //myList.insert(3, 5);
-    //myList.Iterator();
+    // myList.remove(0);
+    // myList.Iterator();
+    myList.insert(0, 5);
+    myList.Iterator();
     //int pos = myList.find(5);
     //cout << pos << endl;
     return 0;

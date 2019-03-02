@@ -172,15 +172,15 @@ T List<T>::remove(Rank r)
 template <typename T>
 ListNode<T>* List<T>::insert(Rank r, T data)
 {
-    ListNode<T>* current = header->next;
-    ListNode<T>* record = header;
     int count = 0;
-    while (count != r && current != trailer)
+    ListNode<T>* current = header->next;
+    while (current != trailer && count != r)
     {
         current = current->next;
-        record = record->next;
-        count++;     
+        count++;
     }
+    // 找到前一个节点
+    ListNode<T>* record = findPrevious(r);
 
     ListNode<T>* p = new ListNode<T>;
     record->next = p;
