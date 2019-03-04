@@ -3,6 +3,7 @@ typedef int Rank;
 template <typename T>
 class ListNode
 {
+    public:
     T data;
     // 双向链表指针
     ListNode<T>* pre;  

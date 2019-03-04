@@ -13,7 +13,7 @@ protected:
     void init();
 
 public:
-    List() { init() };
+    List() { init(); };
     int size();
 };
 
@@ -23,9 +23,9 @@ void List<T>::init()
     header = new ListNode<T>;
     trailer = new ListNode<T>;
     header->succ = trailer;
-    header->pred = nullptr;
+    header->pre = nullptr;
     trailer->succ = nullptr;
-    trailer->pred = header;
+    trailer->pre = header;
 }
 
 template <typename T>
@@ -40,4 +40,5 @@ int List<T>::size()
     }
     return count;
 }
+
 
