@@ -19,6 +19,8 @@ public:
     int size();
     // 重载[]操作符
     T& operator[] (Rank r) const;
+    // 插入1、2、3三个节点
+    void BuildOneTwoThree();
     
 };
 
@@ -59,4 +61,27 @@ T& List<T>::operator[] (Rank r) const
     return current->data;
 }
 
+template <typename T>
+void List<T>::BuildOneTwoThree()
+{
+    ListNode<T>* one;
+    ListNode<T>* two;
+    ListNode<T>* three;
 
+    one = new ListNode<T>;
+    header->succ = one;
+    one->pre = header;
+    one->data = 1;
+
+    two = new ListNode<T>;
+    one->succ = two;
+    two->pre = one;
+    two->data = 2;
+
+    three = new ListNode<T>;
+    three->succ = trailer;
+    three->pre = two;
+    three->data = 3;
+    trailer->pre = three;
+    
+}
