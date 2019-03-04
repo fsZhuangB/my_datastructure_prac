@@ -13,8 +13,13 @@ protected:
     void init();
 
 public:
+    // 默认构造函数
     List() { init(); };
+    // 返回链表大小
     int size();
+    // 重载[]操作符
+    T& operator[] (Rank r) const;
+    
 };
 
 template <typename T>
@@ -39,6 +44,19 @@ int List<T>::size()
         count++;
     }
     return count;
+}
+
+template <typename T>
+T& List<T>::operator[] (Rank r) const
+{
+    ListNode<T>* current = header->next;
+    int count = 0;
+    while (current != trailer && count != r)
+    {
+        current = current->next;
+        count++;
+    }
+    return current->data;
 }
 
 
