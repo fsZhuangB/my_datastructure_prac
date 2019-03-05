@@ -21,6 +21,9 @@ public:
     T& operator[] (Rank r) const;
     // 插入1、2、3三个节点
     void BuildOneTwoThree();
+
+    // 输出节点
+    void Iterator();
     
 };
 
@@ -71,17 +74,34 @@ void List<T>::BuildOneTwoThree()
     one = new ListNode<T>;
     header->succ = one;
     one->pre = header;
+    one->succ = trailer;
+    trailer->pre = one;
     one->data = 1;
 
     two = new ListNode<T>;
     one->succ = two;
     two->pre = one;
+    two->succ = trailer;
+    trailer->pre = two;
     two->data = 2;
 
     three = new ListNode<T>;
-    three->succ = trailer;
+    two->succ = three;
     three->pre = two;
-    three->data = 3;
+    three->succ = trailer;
     trailer->pre = three;
-    
+    three->data = 3;
+
+}
+
+template <typename T>
+void List<T>::Iterator()
+{
+    ListNode<T>* current = header->succ;
+    while (current != trailer)
+    {
+        std::cout << current->data << " ";
+        current = current->succ;
+    }
+    std::cout << std::endl;
 }
