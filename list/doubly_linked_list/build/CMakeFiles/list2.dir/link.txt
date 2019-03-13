@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/c++   -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/list2.dir/Users/fszhuangb/Documents/my_datastructure_prac/list/doubly_linked_list/src/main.cpp.o  -o list2 

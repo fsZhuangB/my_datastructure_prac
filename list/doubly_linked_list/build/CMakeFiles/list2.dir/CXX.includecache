@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/fszhuangb/Documents/my_datastructure_prac/list/doubly_linked_list/src/list.hpp
+listNode.hpp
+/Users/fszhuangb/Documents/my_datastructure_prac/list/doubly_linked_list/src/listNode.hpp
+iostream
+-
+
+/Users/fszhuangb/Documents/my_datastructure_prac/list/doubly_linked_list/src/listNode.hpp
+
+/Users/fszhuangb/Documents/my_datastructure_prac/list/doubly_linked_list/src/main.cpp
+list.hpp
+/Users/fszhuangb/Documents/my_datastructure_prac/list/doubly_linked_list/src/list.hpp
+
